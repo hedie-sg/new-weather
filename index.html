@@ -15,37 +15,44 @@
     </head>
     <body>
         <div class="container">
-            <div class="weather">
-        <h1>Tehran, Iran</h1>
-        <ul>
-            <li>Friday 00:05</li>
-            <li>Sunny</li>
-        </ul>
-        <div class="row">
-            <div class="col-6">
-                <img
-                    src="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v3/Condition_Card/CloudyV3.svg"
-                    alt=""
-                />
-                15 °C | °F
+            <div class="weather-wrapper">
+                <div class="weather">
+                    <h1>Tehran, Iran</h1>
+                    <ul>
+                        <li>Friday 00:05</li>
+                        <li>Sunny</li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="image temperature">
+                                <img
+                                    src="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v3/Condition_Card/CloudyV3.svg"
+                                    alt=""
+                                />
+                                <strong>15</strong>
+                                <span class="unit"
+                                    >°C |<a href="#"> °F</a></span
+                                >
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li>Humidity: 25%</li>
+                                <li>wind: 5Km/h</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <small>
+                    <a
+                        href="https://github.com/hedie-sg/new-weather"
+                        target="_blank"
+                        >Open-source code</a
+                    >
+                    by hedie sgh
+                </small>
             </div>
-            <div class="col-6">
-                <ul>
-                    <li>Humidity: 25%</li>
-                    <li>wind: 5Km/h</li>
-                </ul>
-            </div>
-            </div>
-            <small>
-                <a
-                    href="https://github.com/hedie-sg/new-weather"
-                    target="_blank"
-                    >Open-source code</a
-                >
-                by hedie sgh
-            </small>
         </div>
-
         <script src="src/index.js"></script>
     </body>
 </html>
