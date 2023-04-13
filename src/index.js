@@ -37,6 +37,12 @@ function displayTemperature(response) {
     windElement.innerHTML = `wind: ${Math.round(response.data.wind.speed)}Km/h`;
     let dateElement = document.querySelector('#date');
     dateElement.innerHTML = newDate(response.data.time * 1000);
+    let iconElement = document.querySelector('#icon');
+    iconElement.setAttribute(
+        'src',
+        `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
+    iconElement.setAttribute('alt', response.data.condition.description);
 }
 
 let apiKey = '2o0f65b4a41b4138505bc7t3f2fa0460';
