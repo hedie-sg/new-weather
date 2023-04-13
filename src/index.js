@@ -45,8 +45,18 @@ function displayTemperature(response) {
     iconElement.setAttribute('alt', response.data.condition.description);
 }
 
-let apiKey = '2o0f65b4a41b4138505bc7t3f2fa0460';
+function search(city) {
+    let apiKey = '2o0f65b4a41b4138505bc7t3f2fa0460';
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayTemperature);
+}
 
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=paris&key=${apiKey}&units=metric`;
+function searchFor(event) {
+    event.preventDefault();
+    let typeCityElement = document.querySelector('#type-city');
+    search(typeCityElement.value);
+}
+search('paris');
 
-axios.get(apiUrl).then(displayTemperature);
+let form = document.querySelector('#search-form');
+form.addEventListener('submit', searchFor);
