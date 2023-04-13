@@ -24,7 +24,6 @@ function newDate(timetemp) {
 }
 
 function displayTemperature(response) {
-    console.log(response.data);
     let temptElement = document.querySelector('#tempt');
     temptElement.innerHTML = Math.round(response.data.temperature.current);
     let cityElement = document.querySelector('#city');
@@ -43,6 +42,7 @@ function displayTemperature(response) {
         `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
     iconElement.setAttribute('alt', response.data.condition.description);
+    celsioseTemprature = response.data.temperature.current;
 }
 
 function search(city) {
@@ -56,7 +56,33 @@ function searchFor(event) {
     let typeCityElement = document.querySelector('#type-city');
     search(typeCityElement.value);
 }
-search('paris');
+
+function showFahrenheitTemp(event) {
+    event.preventDefault();
+
+    celsioseLink.classList.remove('active');
+    fahrenheitLink.classList.add('active');
+    let temperatureElement = document.querySelector('#tempt');
+    let fahrenheitTemp = (celsioseTemprature * 9) / 5 + 32;
+    temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+function showCelsioseTemp(event) {
+    event.preventDefault();
+
+    celsioseLink.classList.add('active');
+    fahrenheitLink.classList.remove('active');
+    let temperatureElement = document.querySelector('#tempt');
+    temperatureElement.innerHTML = Math.round(celsioseTemprature);
+}
+
+let celsioseTemprature = null;
 
 let form = document.querySelector('#search-form');
 form.addEventListener('submit', searchFor);
+
+let fahrenheitLink = document.querySelector('#fahrenheit');
+fahrenheitLink.addEventListener('click', showFahrenheitTemp);
+let celsioseLink = document.querySelector('#celsiuse');
+celsioseLink.addEventListener('click', showCelsioseTemp);
+
+search('tehran');

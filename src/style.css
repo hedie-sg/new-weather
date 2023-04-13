@@ -53,3 +53,10 @@ a {
     font-size: 15px;
     top: -34px;
 }
+.active {
+    color: #878787;
+    cursor: default;
+}
+.active:hover {
+    text-decoration: none;
+}
