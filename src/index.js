@@ -23,7 +23,8 @@ function newDate(timetemp) {
     return `${day} ${hours}:${minutes}`;
 }
 
-function showForcast() {
+function showForcast(response) {
+    console.log(response.data.daily);
     let forcastElement = document.querySelector('#forcast');
 
     let forcastHTML = `<div class="row">`;
@@ -51,6 +52,13 @@ function showForcast() {
     forcastElement.innerHTML = forcastHTML;
 }
 
+function realForcast(city) {
+    let apiKey = '2o0f65b4a41b4138505bc7t3f2fa0460';
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(showForcast);
+}
+
 function displayTemperature(response) {
     let temptElement = document.querySelector('#tempt');
     temptElement.innerHTML = Math.round(response.data.temperature.current);
@@ -71,6 +79,8 @@ function displayTemperature(response) {
     );
     iconElement.setAttribute('alt', response.data.condition.description);
     celsioseTemprature = response.data.temperature.current;
+
+    realForcast(response.data.city);
 }
 
 function search(city) {
@@ -114,4 +124,3 @@ let celsioseLink = document.querySelector('#celsiuse');
 celsioseLink.addEventListener('click', showCelsioseTemp);
 
 search('tehran');
-showForcast();
