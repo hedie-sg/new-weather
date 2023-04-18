@@ -58,7 +58,7 @@ small {
     padding: 15px 20px;
 }
 .btn {
-    background: #d195c2;
+    background: #e641bc;
     border: 1px;
     border-color: #74536b;
     font-size: 16px;
@@ -91,8 +91,8 @@ small {
 }
 .temperature img {
     margin-right: 10px;
-    height: 64px;
-    width: 64px;
+    height: 65px;
+    width: 65px;
 }
 .image strong {
     color: #878787;
@@ -106,7 +106,7 @@ small {
     top: -34px;
 }
 .active {
-    color: #d195c2;
+    color: #e641bc;
     cursor: default;
 }
 .active:hover {
@@ -120,8 +120,28 @@ small {
 }
 .small {
     font-size: 10px;
-    color: #d195c2;
+    color: #e641bc;
 }
 .unit {
     color: #d195c2;
+}
+.forcast {
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+    margin-bottom: 5px;
+}
+.forcact-date {
+    font-size: 18px;
+    opacity: 0.6;
+    text-align: center;
+    line-height: 20px;
+}
+.forcast-min {
+    opacity: 0.7;
+}
+.forcast-min-max-temp {
+    font-size: 13px;
+    color: #e641bc;
+    margin-top: 5px;
 }
