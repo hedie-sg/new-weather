@@ -23,6 +23,34 @@ function newDate(timetemp) {
     return `${day} ${hours}:${minutes}`;
 }
 
+function showForcast() {
+    let forcastElement = document.querySelector('#forcast');
+
+    let forcastHTML = `<div class="row">`;
+    let days = ['Tue', 'Fri', 'Sat', 'Sun', 'Mon', 'Thu'];
+    days.forEach(function (day) {
+        forcastHTML =
+            forcastHTML +
+            `
+                            <div class="col-2">
+                                <div class="forcact-date">${day}</div>
+                                <img
+                                    src="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v3/Condition_Card/CloudyV3.svg"
+                                    id="icon"
+                                    alt=""
+                                    width="40"
+                                />
+                                <div class="forcast-min-max-temp">
+                                    <span class="forcast-max">10°</span>
+                                    <span class="forcast-min">8°</span>
+                                </div>
+                            </div>
+                        `;
+    });
+    forcastHTML = forcastHTML + `</div>`;
+    forcastElement.innerHTML = forcastHTML;
+}
+
 function displayTemperature(response) {
     let temptElement = document.querySelector('#tempt');
     temptElement.innerHTML = Math.round(response.data.temperature.current);
@@ -86,3 +114,4 @@ let celsioseLink = document.querySelector('#celsiuse');
 celsioseLink.addEventListener('click', showCelsioseTemp);
 
 search('tehran');
+showForcast();
