@@ -23,30 +23,50 @@ function newDate(timetemp) {
     return `${day} ${hours}:${minutes}`;
 }
 
+function realDays(time) {
+    let date = new Date(time * 1000);
+    let day = date.getDay();
+    let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    return days[day];
+}
+
 function showForcast(response) {
-    console.log(response.data.daily);
+    console.log(response.data);
+    let forcast = response.data.daily;
+
     let forcastElement = document.querySelector('#forcast');
 
     let forcastHTML = `<div class="row">`;
-    let days = ['Tue', 'Fri', 'Sat', 'Sun', 'Mon', 'Thu'];
-    days.forEach(function (day) {
-        forcastHTML =
-            forcastHTML +
-            `
+
+    forcast.forEach(function (days, index) {
+        if (index < 6) {
+            forcastHTML =
+                forcastHTML +
+                `
                             <div class="col-2">
-                                <div class="forcact-date">${day}</div>
+                                <div class="forcact-date">${realDays(
+                                    days.time
+                                )}</div>
                                 <img
-                                    src="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v3/Condition_Card/CloudyV3.svg"
+                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                                        days.condition.icon
+                                    }.png"
                                     id="icon"
                                     alt=""
                                     width="40"
                                 />
                                 <div class="forcast-min-max-temp">
-                                    <span class="forcast-max">10°</span>
-                                    <span class="forcast-min">8°</span>
+                                    <span class="forcast-max">${Math.round(
+                                        days.temperature.maximum
+                                    )}°</span>
+                                    <span class="forcast-min">${Math.round(
+                                        days.temperature.minimum
+                                    )}°</span>
                                 </div>
                             </div>
                         `;
+        }
     });
     forcastHTML = forcastHTML + `</div>`;
     forcastElement.innerHTML = forcastHTML;
